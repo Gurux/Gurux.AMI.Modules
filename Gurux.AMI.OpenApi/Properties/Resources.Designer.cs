@@ -79,6 +79,23 @@ namespace Gurux.AMI.OpenApi.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to &lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;400&quot; height=&quot;400&quot; viewBox=&quot;0 0 400 400&quot; role=&quot;img&quot; aria-labelledby=&quot;title&quot;&gt;
+        ///  &lt;title id=&quot;title&quot;&gt;OpenAPI&lt;/title&gt;
+        ///  &lt;path fill=&quot;#fff&quot; d=&quot;M0 0h400v400H0z&quot;/&gt;
+        ///  &lt;g fill=&quot;#4d5930&quot;&gt;
+        ///    &lt;path d=&quot;M17 221a162 162 0 0 1 47-113l68 69a66 66 0 0 0-19 44Z&quot;/&gt;
+        ///    &lt;path d=&quot;M185 60a162 162 0 0 1 86 28l-69 70a66 66 0 0 0-17-2Z&quot;/&gt;
+        ///    &lt;path d=&quot;M312 130a162 162 0 0 1 28 85h-96a66 66 0 0 0-3-14Z&quot;/&gt;
+        ///    &lt;path d=&quot;m224 274 64 68a162 162 0 0 1-20 14l-48-79Z&quot;/&gt;
+        ///    &lt;path d=&quot;m147 283-36  [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string OpenApiIcon {
+            get {
+                return ResourceManager.GetString("OpenApiIcon", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to OpenAPI v1 document.
         /// </summary>
         internal static string OpenAPIV1Document {
