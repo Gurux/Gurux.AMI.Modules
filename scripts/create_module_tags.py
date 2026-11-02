@@ -23,9 +23,6 @@ def plan_tags(root, before, revision):
     tags = []
     for identifier, module in sorted(modules.items()):
         paths = module['changelogPaths']
-        if not any(file == path or file.startswith(path.rstrip('/') + '/')
-                   for file in changed for path in paths):
-            continue
         versions = []
         for tag in reachable:
             match = re.fullmatch(re.escape(identifier) + r'/v([0-9]+\.[0-9]+\.[0-9]+(?:\.[0-9]+)?)', tag)
@@ -34,6 +31,15 @@ def plan_tags(root, before, revision):
         # Reuse tags from a partially completed run; never move a release tag.
         existing = [item for item in versions
                     if git(root, 'rev-list', '-n', '1', item[1]) == target]
+        module_changes = changed
+        if versions and not existing:
+            # A previous push may have failed before tagging. Compare with the
+            # last module tag so a workflow-only fix can recover those changes.
+            module_changes = git(root, 'diff', '--name-only', '--no-renames',
+                                 max(versions)[1], target).splitlines()
+        if not any(file == path or file.startswith(path.rstrip('/') + '/')
+                   for file in module_changes for path in paths):
+            continue
         if existing:
             tags.append(max(existing)[1])
             continue

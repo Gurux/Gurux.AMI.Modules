@@ -66,6 +66,18 @@ class CreateModuleTagsTests(unittest.TestCase):
     def test_new_branch_push_uses_full_history(self):
         self.assertEqual(self.plan('0' * 40), ['Gurux.AMI.SMTP/v1.0.0'])
 
+    def test_workflow_fix_push_recovers_previously_untagged_changes(self):
+        self.git('tag', 'Gurux.AMI.SMTP/v4.1.2610.3001')
+        self.commit('SMTP/file', 'previous push not released')
+        before = self.git('rev-parse', 'HEAD')
+        self.commit('.github/workflows/tag-modules.yml', 'fix workflow')
+        self.assertEqual(self.plan(before), ['Gurux.AMI.SMTP/v4.1.2610.3002'])
+
+    def test_documentation_after_tag_does_not_release_module_again(self):
+        self.git('tag', 'Gurux.AMI.SMTP/v4.1.2610.3001')
+        self.commit('README.md', 'documentation')
+        self.assertEqual(self.plan(), [])
+
 
 if __name__ == '__main__':
     unittest.main()
