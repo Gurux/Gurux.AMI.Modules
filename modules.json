@@ -33,6 +33,40 @@
             },
             "assets": {
             }
+        },
+        "Gurux.AMI.Swagger": {
+            "project": "Gurux.AMI.Swagger/Gurux.AMI.Swagger.csproj",
+            "changelogPaths": [
+                "Gurux.AMI.Swagger",
+                "Directory.Build.props",
+                "Directory.Build.targets",
+                "NuGet.Config",
+                "scripts/Gurux.AMI.Module.Metadata"
+            ],
+            "localization": {
+                "directory": "Gurux.AMI.Swagger/localized",
+                "defaultCulture": "en",
+                "ownerVersionRange": "[4.1.2610.3001,4.2.0)"
+            },
+            "assets": {
+            }
+        },
+        "Gurux.AMI.Scalar": {
+            "project": "Gurux.AMI.Scalar/Gurux.AMI.Scalar.csproj",
+            "changelogPaths": [
+                "Gurux.AMI.Scalar",
+                "Directory.Build.props",
+                "Directory.Build.targets",
+                "NuGet.Config",
+                "scripts/Gurux.AMI.Module.Metadata"
+            ],
+            "localization": {
+                "directory": "Gurux.AMI.Scalar/localized",
+                "defaultCulture": "en",
+                "ownerVersionRange": "[4.1.2610.3001,4.2.0)"
+            },
+            "assets": {
+            }
         }
     }
 }
