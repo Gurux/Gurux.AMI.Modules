@@ -77,5 +77,18 @@ namespace Gurux.AMI.Scalar.Properties {
                 return ResourceManager.GetString("Scalar", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;554&quot; height=&quot;554&quot; viewBox=&quot;0 0 554 554&quot;&gt;
+        ///    &lt;rect width=&quot;554&quot; height=&quot;554&quot; fill=&quot;#fff&quot;/&gt;
+        ///    &lt;g fill=&quot;#1b1b1a&quot;&gt;
+        ///        &lt;path d=&quot;M219 11Q219 0 230 0H324Q335 0 335 11V136L423 48Q431 40 439 48L506 115Q513 123 506 131L418 219H543Q554 219 554 230V324Q554 335 543 335H418L506 423Q513 431 506 439L439 506Q431 513 423 506L335 418V543Q335 554 324 554H230Q219 554 219 543V478Q219 446 242 423L362 303Q383 282 362 254L242 133Q219 110 219 78Z&quot;/&gt;
+        ///        &lt;path d=&quot;M114 49Q1 [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string ScalarIcon {
+            get {
+                return ResourceManager.GetString("ScalarIcon", resourceCulture);
+            }
+        }
     }
 }

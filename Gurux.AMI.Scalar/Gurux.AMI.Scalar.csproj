@@ -26,6 +26,9 @@
             <DependentUpon>Resources.resx</DependentUpon>
         </Compile>
     </ItemGroup>
+    <ItemGroup>
+        <None Update="assets\**\*" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="PreserveNewest" />
+    </ItemGroup>
     <Target Name="ZipPublish" AfterTargets="Publish">
         <MakeDir Directories="$(AMIModuleArchiveDirectory)" />
         <ZipDirectory SourceDirectory="$(PublishDir)" DestinationFile="$(AMIModuleArchiveDirectory)/$(PackageId)-$(Version).zip" Overwrite="true" />
