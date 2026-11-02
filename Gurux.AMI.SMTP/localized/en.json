@@ -1,0 +1,16 @@
+{
+    "Close": "Close",
+    "Email": "Email",
+    "GuruxDLMSAMISMTPTestEMail": "Gurux.DLMS.AMI SMTP test e-mail",
+    "IfYouReceiveThisMessageItMeansYourSiteIsCapableOfUsingSMTPToSendEMail": "If you receive this message it means your site is capable of using SMTP to send e-mail.",
+    "InvalidEmailAddress": "Invalid SMTP email address.",
+    "InvalidHost": "Invalid SMTP server address.",
+    "InvalidPort": "Invalid SMTP server port.",
+    "Password": "Password",
+    "SaveConfigurationText": "Save",
+    "SendTestEmail": "Send test email.",
+    "SMTPServerAddress": "SMTP server address",
+    "SMTPServerPort": "SMTP server port",
+    "SmtpTitle": "SMTP Settings",
+    "TestEmail": "E-mail address to send a test e-mail to"
+}

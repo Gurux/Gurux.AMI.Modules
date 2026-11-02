@@ -19,6 +19,7 @@ concurrency:
 
 jobs:
   release:
+    if: ${{ !contains(inputs.tag || github.ref_name, '/localization/') && !contains(inputs.tag || github.ref_name, '/assets/') }}
     runs-on: windows-latest
     timeout-minutes: 45
     defaults:

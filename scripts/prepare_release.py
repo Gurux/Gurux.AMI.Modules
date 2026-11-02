@@ -9,16 +9,25 @@ import subprocess
 VERSION = r'(?:0|[1-9][0-9]*)\.(?:0|[1-9][0-9]*)\.(?:0|[1-9][0-9]*)(?:\.[0-9]+)?(?:-[0-9A-Za-z]+(?:[.-][0-9A-Za-z]+)*)?(?:\+[0-9A-Za-z]+(?:[.-][0-9A-Za-z]+)*)?'
 
 
+def parse_tag(tag):
+    """Return module, package type and version for the three release tag families."""
+    match = re.fullmatch(r'(Gurux\.AMI\.[A-Za-z0-9_.-]+)/(?:(' +
+                         r'localization|assets)/)?v(' + VERSION + ')', tag)
+    if not match:
+        raise ValueError('Expected tag <Gurux.AMI.Module>[/localization|/assets]/v<version>')
+    identifier, kind, version = match.groups()
+    return identifier, kind or 'module', version
+
+
 def git(root, *args):
     return subprocess.check_output(['git', *args], cwd=root, text=True, encoding='utf-8').strip()
 
 
 def prepare_release(root, tag, published_tags):
     root = Path(root).resolve()
-    match = re.fullmatch(r'(Gurux\.AMI\.[A-Za-z0-9_.-]+)/v(' + VERSION + ')', tag)
-    if not match:
+    identifier, kind, version = parse_tag(tag)
+    if kind != 'module':
         raise ValueError('Expected tag <Gurux.AMI.Module>/v<version>')
-    identifier, version = match.groups()
     modules = json.loads((root / 'modules.json').read_text(encoding='utf-8'))['modules']
     if identifier not in modules:
         raise ValueError(f'Unknown module: {identifier}')

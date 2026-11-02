@@ -1,0 +1,65 @@
+name: Release AMI module content
+
+on:
+  push:
+    tags: ['Gurux.AMI.*/localization/v*', 'Gurux.AMI.*/assets/v*']
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: Existing localization or assets tag to publish or retry
+        required: true
+        type: string
+
+permissions:
+  contents: write
+
+concurrency:
+  group: content-release-${{ inputs.tag || github.ref_name }}
+  cancel-in-progress: false
+
+jobs:
+  release:
+    runs-on: windows-latest
+    timeout-minutes: 30
+    defaults:
+      run:
+        shell: pwsh
+    env:
+      RELEASE_TAG: ${{ inputs.tag || github.ref_name }}
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: refs/tags/${{ inputs.tag || github.ref_name }}
+          persist-credentials: false
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+      - name: Validate tag and confined content sources
+        run: |
+          python scripts/prepare_content_release.py --tag $env:RELEASE_TAG --output release
+          if ($LASTEXITCODE -ne 0) { throw 'Content configuration validation failed' }
+      - uses: actions/checkout@v6
+        with:
+          repository: Gurux/Gurux.Updater.Net
+          path: .updater
+          persist-credentials: false
+      - uses: actions/setup-dotnet@v5
+        with:
+          dotnet-version: '10.0.x'
+      - name: Build content packaging tool only
+        run: |
+          dotnet publish .updater/Development/Gurux.Updater.Tool/Gurux.Updater.Tool.csproj --configuration Release --output .updater-tool -p:GeneratePackageOnBuild=false
+          if ($LASTEXITCODE -ne 0) { throw 'Updater packaging tool build failed' }
+      - name: Test preparation, publication and real content package protocol
+        env:
+          GURUX_CONTENT_TOOL: ${{ github.workspace }}/.updater-tool/Gurux.Updater.Tool.dll
+        run: |
+          python -m unittest discover -s tests -v
+          if ($LASTEXITCODE -ne 0) { throw 'Content release tests failed' }
+      - name: Publish or verify content and notify Catalog
+        env:
+          GH_TOKEN: ${{ github.token }}
+          CATALOG_TOKEN: ${{ secrets.CATALOG_DISPATCH_TOKEN }}
+        run: |
+          python scripts/publish_content_release.py --tool .updater-tool/Gurux.Updater.Tool.dll --output release
+          if ($LASTEXITCODE -ne 0) { throw 'Content release failed; retry the same existing tag' }
