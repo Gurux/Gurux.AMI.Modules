@@ -25,7 +25,7 @@ public sealed class GXSwaggerEndpointSource : EndpointDataSource
         });
         var endpoint = new RouteEndpointBuilder(application.Build(), RoutePatternFactory.Parse("/swagger/{**asset}"), 0)
         {
-            DisplayName = global::Gurux.AMI.Swagger.Properties.Resources.SwaggerUI
+            DisplayName = global::Gurux.AMI.Swagger.Properties.Resources.Swagger
         };
         endpoint.Metadata.Add(new HttpMethodMetadata(["GET", "HEAD"]));
         endpoint.Metadata.Add(new ExcludeFromDescriptionAttribute());

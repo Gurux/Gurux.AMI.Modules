@@ -11,9 +11,9 @@ public sealed class GXSwaggerModule : GXAmiModuleBase
     /// <inheritdoc />
     public override string Id => "Swagger";
     /// <inheritdoc />
-    public override string Name => global::Gurux.AMI.Swagger.Properties.Resources.SwaggerUI;
+    public override string Name => Properties.Resources.SwaggerUI;
     /// <inheritdoc />
-    public override string Description => global::Gurux.AMI.Swagger.Properties.Resources.InteractiveSwaggerAPIDocumentation;
+    public override string Description => Properties.Resources.InteractiveSwaggerAPIDocumentation;
     /// <inheritdoc />
     public override IReadOnlyList<AmiModuleDependency> Dependencies => [new(AmiModuleDependencyKind.Module, "OpenApi")];
 

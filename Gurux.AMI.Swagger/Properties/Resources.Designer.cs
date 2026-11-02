@@ -70,20 +70,24 @@ namespace Gurux.AMI.Swagger.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;64&quot; height=&quot;64&quot; viewBox=&quot;0 0 64 64&quot; fill=&quot;none&quot; stroke=&quot;#1674B8&quot; stroke-width=&quot;3&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot; role=&quot;img&quot;&gt;&lt;title&gt;Gurux.AMI.Swagger&lt;/title&gt;&lt;rect x=&quot;7&quot; y=&quot;9&quot; width=&quot;50&quot; height=&quot;46&quot; rx=&quot;9&quot;/&gt;&lt;path d=&quot;M25 21h-2a4 4 0 0 0-4 4v3a4 4 0 0 1-4 4 4 4 0 0 1 4 4v3a4 4 0 0 0 4 4h2m14-22h2a4 4 0 0 1 4 4v3a4 4 0 0 0 4 4 4 4 0 0 0-4 4v3a4 4 0 0 1-4 4h-2&quot;/&gt;&lt;circle cx=&quot;28&quot; cy=&quot;32&quot; r=&quot;1.5&quot; fill=&quot;#1674B8&quot; stroke=&quot;none&quot;/&gt;&lt;circle cx=&quot;36&quot; cy=&quot;32&quot; r=&quot;1 [rest of string was truncated]&quot;;.
+        ///   Looks up a localized string similar to Swagger.
         /// </summary>
-        internal static string SwaggerIcon {
+        internal static string Swagger {
             get {
-                return ResourceManager.GetString("SwaggerIcon", resourceCulture);
+                return ResourceManager.GetString("Swagger", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Swagger UI.
+        ///   Looks up a localized string similar to &lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; viewBox=&quot;0 0 128 128&quot; role=&quot;img&quot; aria-label=&quot;Swagger module icon&quot;&gt;
+        ///    &lt;circle cx=&quot;64&quot; cy=&quot;64&quot; r=&quot;60&quot; fill=&quot;#38A80B&quot;/&gt;
+        ///    &lt;text x=&quot;64&quot; y=&quot;81&quot; fill=&quot;#FFFFFF&quot; font-family=&quot;Arial,DejaVu Sans,sans-serif&quot; font-size=&quot;51&quot; font-weight=&quot;bold&quot; text-anchor=&quot;middle&quot;&gt;{...}&lt;/text&gt;
+        ///&lt;/svg&gt;
+        ///.
         /// </summary>
-        internal static string SwaggerUI {
+        internal static string SwaggerIcon {
             get {
-                return ResourceManager.GetString("SwaggerUI", resourceCulture);
+                return ResourceManager.GetString("SwaggerIcon", resourceCulture);
             }
         }
     }

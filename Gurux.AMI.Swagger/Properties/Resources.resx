@@ -117,13 +117,14 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="SwaggerUI" xml:space="preserve">
-    <value>Swagger UI</value>
+  <data name="Swagger" xml:space="preserve">
+    <value>Swagger</value>
   </data>
   <data name="InteractiveSwaggerAPIDocumentation" xml:space="preserve">
     <value>Interactive Swagger API documentation.</value>
   </data>
-  <data name="SwaggerIcon" xml:space="preserve">
-    <value>&lt;svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64" fill="none" stroke="#1674B8" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" role="img"&gt;&lt;title&gt;Gurux.AMI.Swagger&lt;/title&gt;&lt;rect x="7" y="9" width="50" height="46" rx="9"/&gt;&lt;path d="M25 21h-2a4 4 0 0 0-4 4v3a4 4 0 0 1-4 4 4 4 0 0 1 4 4v3a4 4 0 0 0 4 4h2m14-22h2a4 4 0 0 1 4 4v3a4 4 0 0 0 4 4 4 4 0 0 0-4 4v3a4 4 0 0 1-4 4h-2"/&gt;&lt;circle cx="28" cy="32" r="1.5" fill="#1674B8" stroke="none"/&gt;&lt;circle cx="36" cy="32" r="1.5" fill="#1674B8" stroke="none"/&gt;&lt;/svg&gt;</value>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="SwaggerIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\assets\Swagger.svg;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
 </root>
