@@ -4,6 +4,8 @@
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
         <Version>0.0.1-local</Version>
+        <Version Condition="'$(AmiModuleReleaseVersion)' != ''">$(AmiModuleReleaseVersion)</Version>
+        <AmiModuleCompatibilityMetadata>true</AmiModuleCompatibilityMetadata>
         <PackageId>Gurux.AMI.Scalar</PackageId>
         <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
         <GenerateDocumentationFile>true</GenerateDocumentationFile>
