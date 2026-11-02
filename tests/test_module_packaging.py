@@ -4,6 +4,7 @@ import shutil
 import subprocess
 import tempfile
 import unittest
+import zipfile
 from xml.sax.saxutils import escape
 
 TARGETS = Path(__file__).resolve().parents[1] / 'Directory.Build.targets'
@@ -11,6 +12,27 @@ TARGETS = Path(__file__).resolve().parents[1] / 'Directory.Build.targets'
 
 @unittest.skipUnless(shutil.which('dotnet'), '.NET SDK required')
 class ModulePackagingTests(unittest.TestCase):
+    def test_openapi_archive_uses_release_version_and_module_name(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            publish = root / 'publish'
+            publish.mkdir()
+            (publish / 'module.txt').write_text('published module')
+            project = TARGETS.parent / 'Gurux.AMI.OpenApi/Gurux.AMI.OpenApi.csproj'
+            result = subprocess.run([
+                'dotnet', 'msbuild', str(project), '-t:ZipPublish', '-nologo',
+                '-p:Configuration=Release', '-p:AmiModuleReleaseVersion=1.0.0',
+                '-p:AmiModuleCompatibilityMetadata=false', '-p:AmiModuleExcludeHostAssemblies=false',
+                f'-p:PublishDir={publish.as_posix()}/',
+                f'-p:ProjectDir={root.as_posix()}/',
+                f'-p:AmiModuleArchiveDirectory={root.as_posix()}/bin/Release'],
+                cwd=root, capture_output=True, text=True)
+            self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
+            archive = root / 'bin/Release/Gurux.AMI.OpenApi-1.0.0.zip'
+            self.assertTrue(archive.is_file(), result.stdout + result.stderr)
+            with zipfile.ZipFile(archive) as package:
+                self.assertEqual(package.read('module.txt'), b'published module')
+
     def test_filters_shared_contracts_and_stale_satellites_but_keeps_private_files(self):
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)

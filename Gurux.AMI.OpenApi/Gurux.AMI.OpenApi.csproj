@@ -6,6 +6,7 @@
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
         <Version>0.0.1-local</Version>
+        <Version Condition="'$(AmiModuleReleaseVersion)' != ''">$(AmiModuleReleaseVersion)</Version>
         <PackageId>Gurux.AMI.OpenApi</PackageId>
         <PackageLicenseExpression>GPL-2.0-only</PackageLicenseExpression>
         <Description>Optional AMI OpenApi documentation module.</Description>
@@ -22,19 +23,6 @@
     <ItemGroup>
         <InternalsVisibleTo Include="OpenApi.Checks" />
     </ItemGroup>
-    <PropertyGroup>
-        <AMIModuleArchiveDirectory Condition="'$(AMIModuleArchiveDirectory)' == ''">$(ProjectDir)bin/$(Configuration)</AMIModuleArchiveDirectory>
-        <DefaultItemExcludes>$(DefaultItemExcludes);Tests/**;**/*.Tests/**</DefaultItemExcludes>
-    </PropertyGroup>
-    <Target Name="ExcludeHostContracts" AfterTargets="ComputeFilesToPublish">
-        <ItemGroup>
-            <ResolvedFileToPublish Remove="@(ResolvedFileToPublish)" Condition="'%(Filename)' == 'Gurux.DLMS.AMI.Module' or '%(Filename)' == 'Gurux.DLMS.AMI.Shared' or '%(Filename)' == 'Gurux.Service.Common'" />
-        </ItemGroup>
-    </Target>
-    <Target Name="ZipPublish" AfterTargets="Publish">
-        <MakeDir Directories="$(AMIModuleArchiveDirectory)" />
-        <ZipDirectory SourceDirectory="$(PublishDir)" DestinationFile="$(AMIModuleArchiveDirectory)/$(PackageId)-$(Version).zip" Overwrite="true" />
-    </Target>
     <ItemGroup>
         <EmbeddedResource Update="Properties/Resources.resx">
             <Generator>ResXFileCodeGenerator</Generator>
@@ -46,4 +34,8 @@
             <DependentUpon>Resources.resx</DependentUpon>
         </Compile>
     </ItemGroup>
+    <Target Name="ZipPublish" AfterTargets="Publish">
+        <MakeDir Directories="$(AMIModuleArchiveDirectory)" />
+        <ZipDirectory SourceDirectory="$(PublishDir)" DestinationFile="$(AMIModuleArchiveDirectory)/$(PackageId)-$(Version).zip" Overwrite="true" />
+    </Target>
 </Project>
