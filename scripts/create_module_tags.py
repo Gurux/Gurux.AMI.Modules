@@ -1,5 +1,6 @@
 """Tag changed modules on a branch push and explicitly dispatch their releases."""
 import argparse
+from datetime import datetime, timezone
 import json
 import os
 from pathlib import Path
@@ -11,7 +12,10 @@ def git(root, *args):
     return subprocess.check_output(['git', *args], cwd=root, text=True, encoding='utf-8').strip()
 
 
-def plan_tags(root, before, revision):
+def plan_tags(root, before, revision, *, today=None):
+    today = today if today is not None else datetime.now(timezone.utc).date()
+    month = (today.year % 100) * 100 + today.month
+    first_revision = today.day * 100 + 1
     root = Path(root)
     modules = json.loads((root / 'modules.json').read_text(encoding='utf-8'))['modules']
     target = git(root, 'rev-parse', revision)
@@ -47,11 +51,17 @@ def plan_tags(root, before, revision):
         if existing:
             tags.append(max(existing)[1])
             continue
-        if versions:
-            version = list(max(versions)[0])
-            version[-1] += 1
-        else:
-            version = [1, 0, 0]
+        latest = max(versions)[0] if versions else None
+        major, minor = latest[:2] if latest else (1, 0)
+        version = [major, minor, month, first_revision]
+        if latest:
+            previous = (*latest, 0) if len(latest) == 3 else latest
+            if previous[2] > month or (previous[2] == month and previous[3] // 100 > today.day):
+                raise ValueError(f'Release date precedes the latest version for {identifier}')
+            if previous[2] == month and previous[3] // 100 == today.day:
+                if previous[3] % 100 >= 99:
+                    raise ValueError(f'Maximum 99 releases per day reached for {identifier}')
+                version[3] = max(first_revision, previous[3] + 1)
         tags.append(identifier + '/v' + '.'.join(map(str, version)))
     return tags
 

@@ -36,6 +36,14 @@ Add repository secret `CATALOG_DISPATCH_TOKEN`: a fine-grained PAT scoped to `Gu
 
 To retry a release or Catalog notification, run **Actions → Release AMI module → Run workflow** with the existing tag. Published ZIP packages are not overwritten.
 
+Automatic module tags use `major.minor.YYMM.DDNN` based on the UTC publication
+date. The existing major/minor is preserved (initially `1.0` for a new module).
+For example, the first release on November 2, 2026 is `4.1.2611.201`, followed
+by `4.1.2611.202`; November 3 starts at `4.1.2611.301`. The final two digits
+are the day's sequence, from `01` through `99`. Tagging fails if the date would
+downgrade the latest version or if the day's sequence is exhausted. Retrying
+the same commit reuses its existing tag, even on a later day.
+
 ## Package compatibility
 
 Publish builds generate `module.compatibility.json` inside the ZIP. The workflow uploads a matching `<id>-<version>.compatibility.json` release asset before publishing the draft. Catalog validates this sidecar and copies its exact host assembly requirements to the release's `references` field, used by AMI's existing pre-install compatibility check.

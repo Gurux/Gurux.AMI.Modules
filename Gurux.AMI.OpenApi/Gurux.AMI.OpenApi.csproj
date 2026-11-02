@@ -11,7 +11,6 @@
         <PackageLicenseExpression>GPL-2.0-only</PackageLicenseExpression>
         <Description>Optional AMI OpenApi documentation module.</Description>
         <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
-        <GenerateDocumentationFile>true</GenerateDocumentationFile>
         <GenerateDocumentationFile>True</GenerateDocumentationFile>
     </PropertyGroup>
     <ItemGroup>
@@ -19,9 +18,6 @@
         <PackageReference Include="Gurux.DLMS.AMI.Module" Version="4.1.2611.201" />
         <PackageReference Include="Gurux.DLMS.AMI.Shared" Version="4.1.2611.206" />
         <PackageReference Include="Microsoft.OpenApi" Version="3.11.0" />
-    </ItemGroup>
-    <ItemGroup>
-        <InternalsVisibleTo Include="OpenApi.Checks" />
     </ItemGroup>
     <ItemGroup>
         <EmbeddedResource Update="Properties/Resources.resx">
