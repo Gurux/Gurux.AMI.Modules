@@ -46,7 +46,8 @@
         </EmbeddedResource>
     </ItemGroup>
     <Target Name="ZipPublish" AfterTargets="Publish">
-        <ZipDirectory SourceDirectory="$(PublishDir)" DestinationFile="$(ProjectDir)bin/$(Configuration)/Gurux.AMI.SMTP-$(Version).zip" Overwrite="true" />
+        <MakeDir Directories="$(AMIModuleArchiveDirectory)" />
+        <ZipDirectory SourceDirectory="$(PublishDir)" DestinationFile="$(AMIModuleArchiveDirectory)/$(PackageId)-$(Version).zip" Overwrite="true" />
     </Target>
 </Project>
 
