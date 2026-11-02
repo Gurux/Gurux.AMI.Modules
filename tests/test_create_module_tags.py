@@ -50,6 +50,7 @@ class CreateModuleTagsTests(unittest.TestCase):
         self.assertEqual(self.plan(), ['Gurux.AMI.OpenApi/v1.0.0', 'Gurux.AMI.SMTP/v1.0.0'])
 
     def test_unrelated_commit_creates_no_tags(self):
+        self.git('tag', 'Gurux.AMI.SMTP/v1.0.0')
         self.commit('README.md', 'documentation')
         self.assertEqual(self.plan(), [])
 
@@ -77,6 +78,13 @@ class CreateModuleTagsTests(unittest.TestCase):
         self.git('tag', 'Gurux.AMI.SMTP/v4.1.2610.3001')
         self.commit('README.md', 'documentation')
         self.assertEqual(self.plan(), [])
+
+    def test_first_release_includes_module_added_before_current_push(self):
+        self.commit('OpenApi/file', 'add OpenApi in earlier push')
+        self.git('tag', 'Gurux.AMI.SMTP/v4.1.2610.3002')
+        before = self.git('rev-parse', 'HEAD')
+        self.commit('.github/workflows/tag-modules.yml', 'fix workflow')
+        self.assertEqual(self.plan(before), ['Gurux.AMI.OpenApi/v1.0.0'])
 
 
 if __name__ == '__main__':

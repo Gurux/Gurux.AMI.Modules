@@ -32,7 +32,11 @@ def plan_tags(root, before, revision):
         existing = [item for item in versions
                     if git(root, 'rev-list', '-n', '1', item[1]) == target]
         module_changes = changed
-        if versions and not existing:
+        if not versions:
+            # No baseline exists: all tracked module sources are unreleased,
+            # including sources committed before automation was introduced.
+            module_changes = git(root, 'ls-tree', '-r', '--name-only', target).splitlines()
+        elif not existing:
             # A previous push may have failed before tagging. Compare with the
             # last module tag so a workflow-only fix can recover those changes.
             module_changes = git(root, 'diff', '--name-only', '--no-renames',
