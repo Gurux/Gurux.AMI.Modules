@@ -1,5 +1,4 @@
 <Project Sdk="Microsoft.NET.Sdk.Razor">
-
     <PropertyGroup>
         <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
         <AmiModuleCompatibilityMetadata>true</AmiModuleCompatibilityMetadata>
@@ -7,27 +6,18 @@
         <Nullable>enable</Nullable>
         <ImplicitUsings>enable</ImplicitUsings>
         <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
-        <GenerateDocumentationFile>True</GenerateDocumentationFile>
-        <Company>Gurux Ltd</Company>
-        <Authors>Gurux Ltd</Authors>
-        <Copyright>Copyright (c) 1998-2026 Gurux Ltd. All rights reserved.</Copyright>
-        <PackageProjectUrl>www.gurux.fi/Gurux.DLMS.AMI4</PackageProjectUrl>
         <Description>Gurux.AMI.SMTP adds SMTP support for Gurux DLMS AMI.</Description>
         <Version Condition=" '$(BUILD_BUILDNUMBER)' == '' ">0.0.1-local</Version>
         <Version Condition=" '$(BUILD_BUILDNUMBER)' != '' ">$(BUILD_BUILDNUMBER)</Version>
         <Version Condition="'$(AmiModuleReleaseVersion)' != ''">$(AmiModuleReleaseVersion)</Version>
-        <RepositoryUrl>https://github.com/gurux/gurux.dlms.ami4</RepositoryUrl>
         <PackageTags>Gurux Device Framework Network DLMS AMI</PackageTags>
         <PackageId>Gurux.AMI.SMTP</PackageId>
         <PlatformTarget>AnyCPU</PlatformTarget>
         <PackageLicenseExpression>GPL-2.0-only</PackageLicenseExpression>
     </PropertyGroup>
-
-
     <ItemGroup>
         <SupportedPlatform Include="browser" />
     </ItemGroup>
-
     <ItemGroup>
         <PackageReference Include="Gurux.DLMS.AMI.Http" Version="4.1.2610.3001" />
         <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="10.0.14" />

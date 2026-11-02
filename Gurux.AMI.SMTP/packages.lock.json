@@ -10,9 +10,9 @@
       },
       "Gurux.DLMS.AMI.Module": {
         "type": "Direct",
-        "requested": "[4.1.2610.3001, )",
-        "resolved": "4.1.2610.3001",
-        "contentHash": "aPRtwb/w5fz0QXpymIHA6rWzfoHNNLwf1EBfDwHqnXnVI9Fs9pNZ8HTQEJIuxuqwjboHiFfn1Fuhe0QrhP0gig==",
+        "requested": "[4.1.2611.201, )",
+        "resolved": "4.1.2611.201",
+        "contentHash": "sfpgM/fZhMZZqft1eq3N9lwzzAU9ylGNJqzCeRK87eI5xo+6bjPoFr5R958foQMQS4WW4Gp//4g9ujBofMXBEQ==",
         "dependencies": {
           "Microsoft.AspNetCore.Authorization": "10.0.14",
           "Microsoft.AspNetCore.Components.Web": "10.0.14",
