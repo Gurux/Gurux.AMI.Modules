@@ -151,6 +151,19 @@ namespace Gurux.AMI.SMTP.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to &lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;32&quot; height=&quot;32&quot; viewBox=&quot;0 0 32 32&quot; fill=&quot;none&quot; role=&quot;img&quot; aria-labelledby=&quot;title&quot;&gt;
+        ///  &lt;title id=&quot;title&quot;&gt;Gurux AMI SMTP — Send email&lt;/title&gt;
+        ///  &lt;path d=&quot;M5 9h16a3 3 0 0 1 3 3v13a3 3 0 0 1-3 3H5a3 3 0 0 1-3-3V12a3 3 0 0 1 3-3Z&quot; fill=&quot;#1976D2&quot;/&gt;
+        ///  &lt;path d=&quot;m4 12 9 7 9-7M4 25l6-6m12 6-6-6&quot; stroke=&quot;#FFF&quot; stroke-width=&quot;1.8&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot;/&gt;
+        ///  &lt;path d=&quot;m19 13 10-10m-8 0h8v8&quot; stroke=&quot;#FFF&quot; stroke-width=&quot;6&quot; stroke-linecap=&quot;round&quot; strok [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string SmtpIcon {
+            get {
+                return ResourceManager.GetString("SmtpIcon", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to SMTP server address.
         /// </summary>
         internal static string SMTPServerAddress {
