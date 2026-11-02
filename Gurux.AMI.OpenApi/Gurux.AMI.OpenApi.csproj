@@ -1,0 +1,51 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <Version>0.0.1-local</Version>
+    <PackageId>Gurux.AMI.OpenApi</PackageId>
+    <PackageLicenseExpression>GPL-2.0-only</PackageLicenseExpression>
+    <Description>Optional AMI OpenApi documentation module.</Description>
+    <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <NoWarn>$(NoWarn);1591</NoWarn>
+    <DefaultItemExcludes>$(DefaultItemExcludes);Tests/**;**/*.Tests/**</DefaultItemExcludes>
+  </PropertyGroup>
+  <ItemGroup>
+    <Content Remove="C:\Users\Mikko\.nuget\packages\gurux.dlms.ami.module\4.1.2610.3001\contentFiles\any\net10.0\Properties\launchSettings.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <FrameworkReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="Gurux.DLMS.AMI.Module" Version="4.1.2610.3001" />
+    <PackageReference Include="Gurux.DLMS.AMI.Shared" Version="4.1.2610.3009" />
+    <PackageReference Include="Microsoft.OpenApi" Version="3.11.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <InternalsVisibleTo Include="OpenApi.Checks" />
+  </ItemGroup>
+  <PropertyGroup>
+    <AMIModuleArchiveDirectory Condition="'$(AMIModuleArchiveDirectory)' == ''">$(ProjectDir)bin/$(Configuration)</AMIModuleArchiveDirectory>
+    <DefaultItemExcludes>$(DefaultItemExcludes);Tests/**;**/*.Tests/**</DefaultItemExcludes>
+  </PropertyGroup>
+  <Target Name="ExcludeHostContracts" AfterTargets="ComputeFilesToPublish">
+    <ItemGroup>
+      <ResolvedFileToPublish Remove="@(ResolvedFileToPublish)" Condition="'%(Filename)' == 'Gurux.DLMS.AMI.Module' or '%(Filename)' == 'Gurux.DLMS.AMI.Shared' or '%(Filename)' == 'Gurux.Service.Common'" />
+    </ItemGroup>
+  </Target>
+  <Target Name="ZipPublish" AfterTargets="Publish">
+    <MakeDir Directories="$(AMIModuleArchiveDirectory)" />
+    <ZipDirectory SourceDirectory="$(PublishDir)" DestinationFile="$(AMIModuleArchiveDirectory)/$(PackageId)-$(Version).zip" Overwrite="true" />
+  </Target>
+  <ItemGroup>
+    <EmbeddedResource Update="Properties/Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <Compile Update="Properties/Resources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+</Project>
