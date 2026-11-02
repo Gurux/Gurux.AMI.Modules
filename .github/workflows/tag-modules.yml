@@ -1,0 +1,42 @@
+name: Tag changed AMI modules
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: write
+  actions: write
+
+concurrency:
+  group: ami-module-tagging
+  cancel-in-progress: false
+
+jobs:
+  tag:
+    runs-on: windows-latest
+    timeout-minutes: 10
+    defaults:
+      run:
+        shell: pwsh
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+      - name: Test automatic module tagging
+        run: |
+          python -m unittest discover -s tests -p test_create_module_tags.py -v
+          if ($LASTEXITCODE -ne 0) { throw 'Module tagging tests failed' }
+      - name: Create tags and start module releases
+        env:
+          GH_TOKEN: ${{ github.token }}
+          BEFORE_SHA: ${{ github.event.before }}
+          COMMIT_SHA: ${{ github.sha }}
+        run: |
+          python scripts/create_module_tags.py --before $env:BEFORE_SHA --revision $env:COMMIT_SHA --publish
+          if ($LASTEXITCODE -ne 0) { throw 'Module tagging or release dispatch failed; rerun this job to retry' }

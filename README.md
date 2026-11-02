@@ -4,7 +4,9 @@ Modules and extensions for Gurux DLMS AMI, with automated releases and module-sp
 
 ## Releases
 
-Each module has independent versions and GitHub Releases. ZIP packages and commit-based changelogs are published automatically when a module tag is pushed.
+Each module has independent versions and GitHub Releases. Pushing commits to `main` automatically creates a tag for each module whose `changelogPaths` changed, then starts its release workflow. Shared source changes can release several modules; unrelated changes create no tags. For a multi-commit push, changes across the whole push are considered.
+
+Automatic tags increment the last numeric component of the highest reachable stable module tag (for example, `Gurux.AMI.SMTP/v4.1.2610.3001` becomes `Gurux.AMI.SMTP/v4.1.2610.3002`). A module without a stable tag starts at `1.0.0`. Rerunning the tagging job reuses tags already created for the same commit. The workflow uses `GITHUB_TOKEN` with Contents and Actions write permissions to create tags and explicitly dispatch releases; it needs no additional token. ZIP packages and commit-based changelogs are also published when a module tag is pushed manually.
 
 For example, to publish SMTP version 1.2.0, commit the changes and push the tag:
 
