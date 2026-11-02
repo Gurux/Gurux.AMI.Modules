@@ -1,14 +1,38 @@
 {
-  "modules": {
-    "Gurux.AMI.SMTP": {
-      "project": "Gurux.AMI.SMTP/Gurux.AMI.SMTP.csproj",
-      "changelogPaths": [
-        "Gurux.AMI.SMTP",
-        "Directory.Build.props",
-        "Directory.Build.targets",
-        "NuGet.Config",
-        "scripts/Gurux.AMI.Module.Metadata"
-      ]
+    "modules": {
+        "Gurux.AMI.SMTP": {
+            "project": "Gurux.AMI.SMTP/Gurux.AMI.SMTP.csproj",
+            "changelogPaths": [
+                "Gurux.AMI.SMTP",
+                "Directory.Build.props",
+                "Directory.Build.targets",
+                "NuGet.Config",
+                "scripts/Gurux.AMI.Module.Metadata"
+            ],
+            "localization": {
+                "directory": "Gurux.AMI.SMTP/localized",
+                "defaultCulture": "en",
+                "ownerVersionRange": "[4.1.2610.3001,4.2.0)"
+            },
+            "assets": {
+            }
+        },
+        "Gurux.AMI.OpenApi": {
+            "project": "Gurux.AMI.OpenApi/Gurux.AMI.OpenApi.csproj",
+            "changelogPaths": [
+                "Gurux.AMI.OpenApi",
+                "Directory.Build.props",
+                "Directory.Build.targets",
+                "NuGet.Config",
+                "scripts/Gurux.AMI.Module.Metadata"
+            ],
+            "localization": {
+                "directory": "Gurux.AMI.OpenApi/localized",
+                "defaultCulture": "en",
+                "ownerVersionRange": "[4.1.2610.3001,4.2.0)"
+            },
+            "assets": {
+            }
+        }
     }
-  }
 }

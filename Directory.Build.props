@@ -1,0 +1,11 @@
+<Project>
+  <PropertyGroup>
+    <Company>Gurux Ltd</Company>
+    <Authors>Gurux Ltd</Authors>
+    <RepositoryUrl>https://github.com/Gurux/Gurux.AMI.Modules</RepositoryUrl>
+    <PackageLicenseExpression>GPL-2.0-only</PackageLicenseExpression>
+    <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+</Project>
