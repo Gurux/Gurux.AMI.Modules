@@ -4,6 +4,8 @@
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
         <Version>0.0.1-local</Version>
+        <Version Condition="'$(AmiModuleReleaseVersion)' != ''">$(AmiModuleReleaseVersion)</Version>
+        <AmiModuleCompatibilityMetadata>true</AmiModuleCompatibilityMetadata>
         <PackageId>Gurux.AMI.Swagger</PackageId>
         <PackageLicenseExpression>GPL-2.0-only</PackageLicenseExpression>
         <Description>Optional AMI Swagger documentation module.</Description>
