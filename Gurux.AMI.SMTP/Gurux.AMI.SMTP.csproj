@@ -19,14 +19,14 @@
         <SupportedPlatform Include="browser" />
     </ItemGroup>
     <ItemGroup>
-        <PackageReference Include="Gurux.DLMS.AMI.Http" Version="4.1.2610.3001" />
+        <PackageReference Include="Gurux.DLMS.AMI.Http" Version="4.1.2611.301" />
         <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="10.0.14" />
         <PackageReference Include="Microsoft.AspNetCore.Http" Version="2.3.13" />
         <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="10.0.14" />
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="Gurux.UI.Components" Version="4.0.2611.201" />
+        <PackageReference Include="Gurux.UI.Components" Version="4.0.2611.301" />
         <PackageReference Include="Gurux.DLMS.AMI.Module" Version="4.1.2611.201" />
         <PackageReference Include="Gurux.DLMS.AMI.Services" Version="4.1.2610.2701" />
     </ItemGroup>
