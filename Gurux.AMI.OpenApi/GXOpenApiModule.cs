@@ -39,7 +39,7 @@ namespace Gurux.AMI.OpenApi;
 public sealed class GXOpenApiModule : GXAmiModuleBase
 {
     /// <inheritdoc />
-    public override string Id => "OpenApi";
+    public override string Id => "Gurux.AMI.OpenApi";
     /// <inheritdoc />
     public override string Name => Properties.Resources.OpenAPI;
     /// <inheritdoc />
@@ -56,3 +56,4 @@ public sealed class GXOpenApiModule : GXAmiModuleBase
         builder.AddEndpointSource<GXOpenApiEndpointSource>();
     }
 }
+

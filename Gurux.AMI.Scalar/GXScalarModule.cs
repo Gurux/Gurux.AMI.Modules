@@ -41,13 +41,13 @@ namespace Gurux.AMI.Scalar;
 public sealed class GXScalarModule : GXAmiModuleBase
 {
     /// <inheritdoc />
-    public override string Id => "Scalar";
+    public override string Id => "Gurux.AMI.Scalar";
     /// <inheritdoc />
     public override string Name => global::Gurux.AMI.Scalar.Properties.Resources.Scalar;
     /// <inheritdoc />
     public override string Description => global::Gurux.AMI.Scalar.Properties.Resources.InteractiveScalarAPIDocumentation;
     /// <inheritdoc />
-    public override IReadOnlyList<AmiModuleDependency> Dependencies => [new(AmiModuleDependencyKind.Module, "OpenApi")];
+    public override IReadOnlyList<AmiModuleDependency> Dependencies => [new(AmiModuleDependencyKind.Module, "Gurux.AMI.OpenApi")];
 
     /// <inheritdoc />
     public override string Icon => Properties.Resources.ScalarIcon;
@@ -67,3 +67,4 @@ public sealed class GXScalarModule : GXAmiModuleBase
         return Task.CompletedTask;
     }
 }
+

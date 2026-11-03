@@ -9,7 +9,7 @@ namespace Gurux.AMI.Swagger;
 public sealed class GXSwaggerModule : GXAmiModuleBase
 {
     /// <inheritdoc />
-    public override string Id => "Swagger";
+    public override string Id => "Gurux.AMI.Swagger";
 
     /// <inheritdoc />
     public override string Name => Properties.Resources.Swagger;
@@ -17,7 +17,7 @@ public sealed class GXSwaggerModule : GXAmiModuleBase
     /// <inheritdoc />
     public override string Description => Properties.Resources.InteractiveSwaggerAPIDocumentation;
     /// <inheritdoc />
-    public override IReadOnlyList<AmiModuleDependency> Dependencies => [new(AmiModuleDependencyKind.Module, "OpenApi")];
+    public override IReadOnlyList<AmiModuleDependency> Dependencies => [new(AmiModuleDependencyKind.Module, "Gurux.AMI.OpenApi")];
 
     /// <inheritdoc />
     public override string Icon => Properties.Resources.SwaggerIcon;
@@ -37,3 +37,4 @@ public sealed class GXSwaggerModule : GXAmiModuleBase
         return Task.CompletedTask;
     }
 }
+
