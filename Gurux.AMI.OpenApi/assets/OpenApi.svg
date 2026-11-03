@@ -1,6 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="400" height="400" viewBox="0 0 400 400" role="img" aria-labelledby="title">
   <title id="title">OpenAPI</title>
-  <path fill="#fff" d="M0 0h400v400H0z"/>
   <g fill="#4d5930">
     <path d="M17 221a162 162 0 0 1 47-113l68 69a66 66 0 0 0-19 44Z"/>
     <path d="M185 60a162 162 0 0 1 86 28l-69 70a66 66 0 0 0-17-2Z"/>
