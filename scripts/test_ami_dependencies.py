@@ -64,7 +64,7 @@ class DependencyTests(unittest.TestCase):
 
     def test_central_versions_only_for_existing_consumers(self):
         with tempfile.TemporaryDirectory() as tmp:
-            root = Path(tmp)
+            root = Path(tmp).resolve()
             (root / 'Directory.Packages.props').write_text(f'<Project><ItemGroup><PackageVersion Include="{MODULE}" Version="1.0.0"/><PackageVersion Include="{SHARED}" Version="1.0.0"/></ItemGroup></Project>')
             (root / 'A.csproj').write_text(f'<Project><ItemGroup><PackageReference Include="{MODULE}"/></ItemGroup></Project>')
             nested = root / 'nested'
@@ -80,7 +80,7 @@ class DependencyTests(unittest.TestCase):
 
     def test_transitive_dependents_and_test_sdk_detection(self):
         with tempfile.TemporaryDirectory() as tmp:
-            root = Path(tmp)
+            root = Path(tmp).resolve()
             for name, body in {
                 'A': f'<PackageReference Include="{MODULE}" Version="1.0.0"/>',
                 'B': '<ProjectReference Include="A.csproj"/>',
@@ -93,9 +93,33 @@ class DependencyTests(unittest.TestCase):
             self.assertEqual({p.stem for p in affected}, {'A', 'B', 'C.Tests'})
             self.assertTrue(graph[root / 'C.Tests.csproj']['test'])
 
+    def test_discover_normalizes_repository_root(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp).resolve()
+            nested = root / 'nested'
+            nested.mkdir()
+            (root / 'A.csproj').write_text('<Project/>')
+            (root / 'B.csproj').write_text('<Project><ItemGroup><ProjectReference Include="A.csproj"/></ItemGroup></Project>')
+
+            graph = ami.discover(nested / '..')
+
+            self.assertEqual(set(graph), {root / 'A.csproj', root / 'B.csproj'})
+            self.assertEqual(ami.dependents(graph, {root / 'A.csproj'}),
+                             {root / 'A.csproj', root / 'B.csproj'})
+
+    def test_discover_rejects_reference_outside_repository(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp).resolve() / 'repo'
+            root.mkdir()
+            (root.parent / 'Outside.csproj').write_text('<Project/>')
+            (root / 'A.csproj').write_text('<Project><ItemGroup><ProjectReference Include="../Outside.csproj"/></ItemGroup></Project>')
+
+            with self.assertRaisesRegex(ValueError, 'Project reference outside repository'):
+                ami.discover(root)
+
     def test_validate_is_offline_from_latest_version_lookup_and_requires_locks(self):
         with tempfile.TemporaryDirectory() as tmp:
-            root = Path(tmp)
+            root = Path(tmp).resolve()
             project = root / 'A.csproj'
             project.write_text(f'<Project><ItemGroup><PackageReference Include="{MODULE}" Version="1.0.0"/></ItemGroup></Project>')
             with patch.object(ami, 'fetch_versions', side_effect=AssertionError('must not query latest')), patch.object(ami, 'dotnet') as dotnet:
@@ -110,7 +134,7 @@ class DependencyTests(unittest.TestCase):
 
     def test_unknown_central_version_fails_instead_of_silently_skipping(self):
         with tempfile.TemporaryDirectory() as tmp:
-            root = Path(tmp)
+            root = Path(tmp).resolve()
             (root / 'Directory.Packages.props').write_text('<Project/>')
             (root / 'A.csproj').write_text(f'<Project><ItemGroup><PackageReference Include="{MODULE}"/></ItemGroup></Project>')
             with self.assertRaisesRegex(ValueError, 'No literal'):

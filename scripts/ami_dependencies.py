@@ -63,6 +63,9 @@ def metadata(node, name):
 
 
 def discover(root):
+    # Compare project references and graph keys using the same canonical path,
+    # including when Windows supplies an 8.3 short name for the repository.
+    root = root.resolve()
     graph = {}
     if (root / '.git').exists():
         tracked = subprocess.run(['git', 'ls-files', '--cached', '--others', '--exclude-standard', '-z', '--', '*.csproj'],
