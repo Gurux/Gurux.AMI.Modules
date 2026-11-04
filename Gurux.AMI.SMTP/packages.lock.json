@@ -30,9 +30,9 @@
       },
       "Gurux.UI.Components": {
         "type": "Direct",
-        "requested": "[4.0.2611.301, )",
-        "resolved": "4.0.2611.301",
-        "contentHash": "aQ37T15QFVwqtX19+R6WZ0wmVUZ5RtMeL9WVaOVkOOVYbrQph8FIk3HYa255Pv7NS7L28rkkZ0F604b6Oztc0A==",
+        "requested": "[4.0.2611.302, )",
+        "resolved": "4.0.2611.302",
+        "contentHash": "fTh15k7tl82DKH3M7rtFotBjc9LvdlpcvoTPLKpNy7UUWu2/tRL/DooJDeo8KBEMZXHkVc88m3Few4v5vXavnw==",
         "dependencies": {
           "Microsoft.AspNetCore.Components.Authorization": "10.0.14",
           "Microsoft.AspNetCore.Components.Web": "10.0.14",
