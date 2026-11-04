@@ -327,8 +327,12 @@ namespace Gurux.AMI.OpenApi.Internal
                     t.GetCustomAttribute<DescriptionAttribute>()?.Description,
                     string.Join("\n", descriptions)
                 }.Where(value => !string.IsNullOrWhiteSpace(value)));
-                schema = new OpenApiSchema { Type = JsonSchemaType.String, Enum = names,
-                    Description = description.Length == 0 ? null : description };
+                schema = new OpenApiSchema
+                {
+                    Type = JsonSchemaType.String,
+                    Enum = names,
+                    Description = description.Length == 0 ? null : description
+                };
                 return true;
             }
 
