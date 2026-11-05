@@ -24,7 +24,6 @@ Configure the module in Gurux DLMS AMI using your email provider's SMTP settings
 
 Use **Send test email** to verify the settings.
 
-
 ## License
 
 This software is available under either of the following licenses:
