@@ -168,3 +168,18 @@ dotnet test ../Gurux.Updater.Net/Tests/ModuleContent.Tests -c Release -p:Generat
 ```
 
 The integration test builds real JSON/ZIP packages, imports them locally, lists and installs each type, and uses a deliberately unbuildable example module to prove that no module DLL is built or project version changed. No GitHub API is invoked by that test. Updater installation/check commands are documented in its README; `--install` is the existing module's directory and `--owner-version` is its actual installed version.
+
+## License
+
+This software is available under either of the following licenses:
+
+- **Open-source license:** GNU General Public License, version 2 only
+  (GPL-2.0-only). See [LICENSE](LICENSE) for the full license text.
+- **Commercial license:** Available from Gurux Ltd under a separate
+  written agreement. This option allows use under the terms of that
+  agreement instead of GPL-2.0-only.
+
+A valid commercial license is required to use the commercial licensing
+option. See [Gurux Commercial License Notice](LICENSES/LicenseRef-Gurux-Commercial.txt).
+
+For commercial licensing inquiries, [contact Gurux Ltd](https://www.gurux.fi/).

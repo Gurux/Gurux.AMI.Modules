@@ -1,2 +1,8 @@
 # Auto detect text files and perform LF normalization
 * text=auto
+
+# Substitute release commit metadata in source archives.
+*.cs export-subst
+*.razor export-subst
+*.py export-subst
+*.ps1 export-subst

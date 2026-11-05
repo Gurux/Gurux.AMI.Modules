@@ -12,7 +12,7 @@
     </PropertyGroup>
     <ItemGroup>
         <FrameworkReference Include="Microsoft.AspNetCore.App" />
-        <PackageReference Include="Gurux.DLMS.AMI.Module" Version="4.1.2611.201" />
+        <PackageReference Include="Gurux.DLMS.AMI.Module" Version="4.1.2611.501" />
         <PackageReference Include="Scalar.AspNetCore" Version="2.18.7" />
     </ItemGroup>
     <ItemGroup>

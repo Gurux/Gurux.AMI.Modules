@@ -1,35 +1,32 @@
 @*
 // --------------------------------------------------------------------------
-//  Gurux Ltd
+// Gurux Ltd
 //
+// Copyright (c) Gurux Ltd.
 //
+// This file is part of Gurux Device Framework.
 //
-// Filename:        $HeadURL$
+// Commit: $Format:%H$
+// Date:   $Format:%cI$
 //
-// Version:         $Revision$,
-//                  $Date$
-//                  $Author$
+// This software is available under either of the following licenses:
 //
-// Copyright (c) Gurux Ltd
+// 1. GNU General Public License, version 2 only (GPL-2.0-only).
+//    See the LICENSE file included with this distribution.
 //
-//---------------------------------------------------------------------------
+// 2. A commercial license granted by Gurux Ltd under a separate written
+//    agreement. Use under this option requires a valid commercial license
+//    and is governed by the terms of that agreement.
 //
-//  DESCRIPTION
+// If you have not obtained a commercial license from Gurux Ltd,
+// use of this software is governed by GPL-2.0-only.
 //
-// This file is a part of Gurux Device Framework.
+// Commercial licensing: https://www.gurux.fi/
 //
-// Gurux Device Framework is Open Source software; you can redistribute it
-// and/or modify it under the terms of the GNU General Public License
-// as published by the Free Software Foundation; version 2 of the License.
-// Gurux Device Framework is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
-// See the GNU General Public License for more details.
-//
-// This code is licensed under the GNU General Public License v2.
-// Full text may be retrieved at http://www.gnu.org/licenses/gpl-2.0.txt
-//---------------------------------------------------------------------------
+// SPDX-License-Identifier: GPL-2.0-only OR LicenseRef-Gurux-Commercial
+// --------------------------------------------------------------------------
 *@
+
 @page "/module/smtp/config"
 @using Gurux.UI.Components
 @using Microsoft.AspNetCore.Authorization
@@ -55,7 +52,7 @@
 
 @if (Settings != null)
 {
-    <EditForm Model="@Settings">
+    <EditForm EditContext="@FormContext">
         <DataAnnotationsValidator />
         <ValidationSummary />
         <div class="row">
@@ -71,7 +68,7 @@
                     <ValidationMessage For="@(() => Settings.Port)" />
                 </div>
                 <div class="form-group">
-                    <label for="timeout"><LocalizedText Value="Timeout (seconds)" /></label>
+                    <label for="timeout"><GXLocalizedText Value="Timeout (seconds)" /></label>
                     <Microsoft.AspNetCore.Components.Forms.InputNumber id="timeout" min="1" max="300" @bind-Value="Settings.TimeoutSeconds" />
                     <ValidationMessage For="@(() => Settings.TimeoutSeconds)" />
                 </div>
@@ -87,20 +84,20 @@
                 </div>
                 <div class="form-group">
                     <Microsoft.AspNetCore.Components.Forms.InputCheckbox id="enableSsl" @bind-Value="Settings.EnableSsl" />
-                    <label for="enableSsl"><LocalizedText Value="Use TLS (STARTTLS)" /></label>
+                    <label for="enableSsl"><GXLocalizedText Value="Use TLS (STARTTLS)" /></label>
                 </div>
                 <hr />
                 <div class="form-group">
                     <span>@Properties.Resources.TestEmail</span>
                     <div class="d-flex align-items-center gap-2">
-                        <Microsoft.AspNetCore.Components.Forms.InputText id="testEmail" @bind-Value="TestEmailAddress" class="form-control" />
+                        <input id="testEmail" @bind="TestEmailAddress" class="form-control" />
                         <button type="button" class="btn btn-outline-primary flex-shrink-0" @onclick="SendTestEmailAsync" disabled="@_sending">
-                            <LocalizedText Value="@(_sending ? "Sending..." : "Send test email")" />
+                            <GXLocalizedText Value="@(_sending ? "Sending..." : "Send test email")" />
                         </button>
                     </div>
                     @if (_testResult != null)
                     {
-                        <div role="status" class="text-success"><LocalizedText Value="@_testResult" /></div>
+                        <div role="status" class="text-success"><GXLocalizedText Value="@_testResult" /></div>
                     }
                 </div>
             </div>
@@ -109,6 +106,13 @@
 }
 
 @code {
+    [CascadingParameter]
+    public EditContext? ParentEditContext { get; set; }
+
+    private EditContext? _localEditContext;
+    private EditContext FormContext => ParentEditContext ??
+        (_localEditContext?.Model == Settings ? _localEditContext : _localEditContext = new EditContext(Settings));
+
     private readonly CancellationTokenSource _lifetime = new();
     public void Dispose() { _lifetime.Cancel(); _lifetime.Dispose(); }
     private string? TestEmailAddress;
