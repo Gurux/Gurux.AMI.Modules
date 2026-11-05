@@ -10,9 +10,9 @@
       },
       "Gurux.DLMS.AMI.Module": {
         "type": "Direct",
-        "requested": "[4.1.2611.501, )",
-        "resolved": "4.1.2611.501",
-        "contentHash": "t6vluJlnZSiuQjcDN3//Af7XVflKJDs6TmQ72WpcoBH6wyAaxAk4BzqEITXqL89Qng2rF4trZ++qJxzBaPj0wg==",
+        "requested": "[4.1.2611.502, )",
+        "resolved": "4.1.2611.502",
+        "contentHash": "KBU51xYAJUF009fvzZwpvqoDak7eBMr3PiRfQj0X73IFfqpAM2kQMpa1bJMtRi76Do2G5gtzXVBBtNTpUHXP5w==",
         "dependencies": {
           "Microsoft.AspNetCore.Authorization": "10.0.14",
           "Microsoft.AspNetCore.Components.Web": "10.0.14",
@@ -30,9 +30,9 @@
       },
       "Gurux.UI.Components": {
         "type": "Direct",
-        "requested": "[4.0.2611.302, )",
-        "resolved": "4.0.2611.302",
-        "contentHash": "fTh15k7tl82DKH3M7rtFotBjc9LvdlpcvoTPLKpNy7UUWu2/tRL/DooJDeo8KBEMZXHkVc88m3Few4v5vXavnw==",
+        "requested": "[4.0.2611.501, )",
+        "resolved": "4.0.2611.501",
+        "contentHash": "l4K+hUwo9N7w+ev/hDrGLnko9JT5XJModoqRef6HsyRHqtPcaYJ7ac9J5kLGhAKVxkGfI4jtFFFkS/Ee9SSLSQ==",
         "dependencies": {
           "Microsoft.AspNetCore.Components.Authorization": "10.0.14",
           "Microsoft.AspNetCore.Components.Web": "10.0.14",

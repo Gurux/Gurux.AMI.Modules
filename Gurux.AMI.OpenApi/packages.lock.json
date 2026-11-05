@@ -4,9 +4,9 @@
     "net10.0": {
       "Gurux.DLMS.AMI.Module": {
         "type": "Direct",
-        "requested": "[4.1.2611.501, )",
-        "resolved": "4.1.2611.501",
-        "contentHash": "t6vluJlnZSiuQjcDN3//Af7XVflKJDs6TmQ72WpcoBH6wyAaxAk4BzqEITXqL89Qng2rF4trZ++qJxzBaPj0wg==",
+        "requested": "[4.1.2611.502, )",
+        "resolved": "4.1.2611.502",
+        "contentHash": "KBU51xYAJUF009fvzZwpvqoDak7eBMr3PiRfQj0X73IFfqpAM2kQMpa1bJMtRi76Do2G5gtzXVBBtNTpUHXP5w==",
         "dependencies": {
           "Microsoft.AspNetCore.Authorization": "10.0.14",
           "Microsoft.AspNetCore.Components.Web": "10.0.14",

@@ -14,7 +14,7 @@
     </PropertyGroup>
     <ItemGroup>
         <FrameworkReference Include="Microsoft.AspNetCore.App" />
-        <PackageReference Include="Gurux.DLMS.AMI.Module" Version="4.1.2611.501" />
+        <PackageReference Include="Gurux.DLMS.AMI.Module" Version="4.1.2611.502" />
         <PackageReference Include="Swashbuckle.AspNetCore.SwaggerUI" Version="10.3.1" />
     </ItemGroup>
     <ItemGroup>
