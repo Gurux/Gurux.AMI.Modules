@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Razor">
+﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
     <PropertyGroup>
         <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
         <AmiModuleCompatibilityMetadata>true</AmiModuleCompatibilityMetadata>
@@ -28,7 +28,7 @@
     <ItemGroup>
         <PackageReference Include="Gurux.UI.Components" Version="4.0.2611.302" />
         <PackageReference Include="Gurux.DLMS.AMI.Module" Version="4.1.2611.501" />
-        <PackageReference Include="Gurux.DLMS.AMI.Services" Version="4.1.2610.2701" />
+        <PackageReference Include="Gurux.DLMS.AMI.Services" Version="4.1.2611.501" />
     </ItemGroup>
 
     <ItemGroup>

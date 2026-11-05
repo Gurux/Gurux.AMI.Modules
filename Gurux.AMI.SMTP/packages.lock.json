@@ -24,9 +24,9 @@
       },
       "Gurux.DLMS.AMI.Services": {
         "type": "Direct",
-        "requested": "[4.1.2610.2701, )",
-        "resolved": "4.1.2610.2701",
-        "contentHash": "mW+Zrj6pKusm22lkbxF4aWdwuedF5TdGm48BuA6MKvLSMq3qpEfBvmTjWBumHKG91Q3bjmH2dXNuILD3EV3ZZA=="
+        "requested": "[4.1.2611.501, )",
+        "resolved": "4.1.2611.501",
+        "contentHash": "vAP+RN+MG6fxqZr84+yWpjBBCnfckaxWXW6K5Ya7A1noiVh1cCEICVMUIOzHKHC72f9HDi+McBuPhoJA7kycXA=="
       },
       "Gurux.UI.Components": {
         "type": "Direct",
