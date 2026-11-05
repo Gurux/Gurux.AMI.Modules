@@ -2,6 +2,7 @@
 
 Provides an interactive guide to AMI services. Users can browse available operations and try requests with their own access permissions.
 
+
 ## License
 
 This software is available under either of the following licenses:
