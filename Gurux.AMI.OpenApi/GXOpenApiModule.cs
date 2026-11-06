@@ -26,8 +26,10 @@
 // --------------------------------------------------------------------------
 
 using Gurux.DLMS.AMI.Module;
-using Microsoft.AspNetCore.Routing;
+using Gurux.UI.Components;
+using Gurux.UI.Components.Help;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.AspNetCore.Routing;
 
 namespace Gurux.AMI.OpenApi;
 
@@ -46,6 +48,11 @@ public sealed class GXOpenApiModule : GXAmiModuleBase
     /// <inheritdoc />
     public override void Configure(AmiModuleBuilder builder)
     {
+        builder.AddHelp<global::Gurux.AMI.OpenApi.Help.GXOpenApiHelpProvider, GXHelpContent>("module.view",
+            static (provider, request, token) => provider.GetHelpAsync(
+                new GXHelpRequest(request.Topic, request.Version, request.Culture), token));
+        builder.Services.AddSingleton<IGXHelpProvider>(services =>
+            services.GetRequiredService<global::Gurux.AMI.OpenApi.Help.GXOpenApiHelpProvider>());
         builder.AddHostSingleton<EndpointDataSource>();
         builder.Services.AddSingleton<GXOpenApiDocumentProvider>();
         builder.Services.AddSingleton<GXOpenApiEndpointSource>();

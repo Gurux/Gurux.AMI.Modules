@@ -27,6 +27,9 @@
 
 using Gurux.DLMS.AMI.Module.Enums;
 using Gurux.DLMS.AMI.Module;
+using Gurux.UI.Components;
+using Gurux.UI.Components.Help;
+using Microsoft.Extensions.DependencyInjection;
 using Gurux.AMI.SMTP.Server;
 
 namespace Gurux.AMI.SMTP;
@@ -51,6 +54,11 @@ public sealed class GXSmtpModule : GXAmiModuleBase
     /// <remarks>Editing configuration and sending test emails require the module.edit policy.</remarks>
     public override void Configure(AmiModuleBuilder builder)
     {
+        builder.AddHelp<global::Gurux.AMI.SMTP.Help.GXSmtpHelpProvider, GXHelpContent>("module.view",
+            static (provider, request, token) => provider.GetHelpAsync(
+                new GXHelpRequest(request.Topic, request.Version, request.Culture), token));
+        builder.Services.AddSingleton<IGXHelpProvider>(services =>
+            services.GetRequiredService<global::Gurux.AMI.SMTP.Help.GXSmtpHelpProvider>());
         builder.AddView<Configuration>(AmiViewArea.Configuration, "module.edit");
         if (!OperatingSystem.IsBrowser())
         {

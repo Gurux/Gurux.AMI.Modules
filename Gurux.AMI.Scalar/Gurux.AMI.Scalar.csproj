@@ -12,7 +12,8 @@
     </PropertyGroup>
     <ItemGroup>
         <FrameworkReference Include="Microsoft.AspNetCore.App" />
-        <PackageReference Include="Gurux.DLMS.AMI.Module" Version="4.1.2611.602" />
+        <PackageReference Include="Gurux.UI.Components" Version="4.0.2611.604" />
+    <PackageReference Include="Gurux.DLMS.AMI.Module" Version="4.1.2611.605" />
         <PackageReference Include="Scalar.AspNetCore" Version="2.19.0" />
     </ItemGroup>
     <ItemGroup>
@@ -33,4 +34,7 @@
         <MakeDir Directories="$(AMIModuleArchiveDirectory)" />
         <ZipDirectory SourceDirectory="$(PublishDir)" DestinationFile="$(AMIModuleArchiveDirectory)/$(PackageId)-$(Version).zip" Overwrite="true" />
     </Target>
+  <ItemGroup>
+    <EmbeddedResource Include="Help/*.md" LogicalName="$(AssemblyName).Help.%(Filename)%(Extension)" />
+  </ItemGroup>
 </Project>

@@ -110,7 +110,7 @@ public sealed class GXSmtpSender(AmiModuleContext context, ISmtpTransportFactory
         ValidateOptions(options);
         if (storedPasswordIsEncrypted && !hasPlainTestPassword && !string.IsNullOrEmpty(options.Password))
         {
-            var crypto = context.HostServices.GetRequiredService<IAmiCryptoService>();
+            var crypto = context.HostServices.GetRequiredService<IGXAmiCryptoService>();
             options.Password = Encoding.UTF8.GetString(await crypto.DecryptAsync(options.Password));
             token.ThrowIfCancellationRequested();
         }

@@ -49,6 +49,13 @@
 @inherits GXAMIModuleSettingsBase<SmtpOptions>
 @implements IDisposable
 
+@if (HelpActive)
+{
+    <CascadingValue TValue="string" Name="@Gurux.UI.Components.Help.GXHelpContext.ScopeName" Value="@((string)null!)" IsFixed="true">
+        <Gurux.UI.Components.Help.GXHelpContext Topic="module:Gurux.AMI.SMTP:configuration" />
+    </CascadingValue>
+}
+
 @if (Settings != null)
 {
     <EditForm EditContext="@FormContext">
@@ -105,6 +112,9 @@
 }
 
 @code {
+    /// <summary>Whether this preserved configuration form is the currently visible module tab.</summary>
+    [CascadingParameter(Name = "GXHelpActive")] public bool HelpActive { get; set; } = true;
+
     [CascadingParameter]
     public EditContext? ParentEditContext { get; set; }
 
@@ -199,7 +209,7 @@
     public override Task InitializeAsync() { Initialize(); return Task.CompletedTask; }
 
     [Inject]
-    public IAmiCryptoService CryptoService { get; set; } = default!;
+    public IGXAmiCryptoService CryptoService { get; set; } = default!;
 
     /// <inheritdoc />
     public override async Task<bool> SaveAsync()

@@ -26,9 +26,11 @@
 // --------------------------------------------------------------------------
 
 using Gurux.DLMS.AMI.Module;
+using Gurux.UI.Components;
+using Gurux.UI.Components.Help;
+using Microsoft.Extensions.DependencyInjection;
 using Gurux.DLMS.AMI.Module.Enums;
 using Gurux.DLMS.AMI.Shared.DTOs.Module;
-using Microsoft.Extensions.DependencyInjection;
 
 namespace Gurux.AMI.Swagger;
 
@@ -52,6 +54,11 @@ public sealed class GXSwaggerModule : GXAmiModuleBase
     /// <inheritdoc />
     public override void Configure(AmiModuleBuilder builder)
     {
+        builder.AddHelp<global::Gurux.AMI.Swagger.Help.GXSwaggerHelpProvider, GXHelpContent>("module.view",
+            static (provider, request, token) => provider.GetHelpAsync(
+                new GXHelpRequest(request.Topic, request.Version, request.Culture), token));
+        builder.Services.AddSingleton<IGXHelpProvider>(services =>
+            services.GetRequiredService<global::Gurux.AMI.Swagger.Help.GXSwaggerHelpProvider>());
         builder.Services.AddSingleton<GXSwaggerEndpointSource>();
         builder.AddEndpointSource<GXSwaggerEndpointSource>();
     }
