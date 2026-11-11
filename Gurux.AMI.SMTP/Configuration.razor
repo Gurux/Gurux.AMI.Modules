@@ -177,7 +177,7 @@
                     Password = InputPassword
                 }
             };
-            using var response = await Http.PostAsJsonAsync("api/extensions/Gurux.AMI.SMTP/test", msg, cancellation.Token);
+            using var response = await Http.PostAsJsonAsync("api/modules/Gurux.AMI.SMTP/test", msg, cancellation.Token);
             await response.EnsureSuccessAsync(cancellation.Token);
             cancellation.Token.ThrowIfCancellationRequested();
             _testResult = "Test email sent.";

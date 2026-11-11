@@ -54,6 +54,7 @@ public sealed class GXSwaggerModule : GXAmiModuleBase
     /// <inheritdoc />
     public override void Configure(AmiModuleBuilder builder)
     {
+        builder.AddView<GXSwaggerView>(AmiViewArea.Extension, "module.view");
         builder.AddHelp<global::Gurux.AMI.Swagger.Help.GXSwaggerHelpProvider, GXHelpContent>("module.view",
             static (provider, request, token) => provider.GetHelpAsync(
                 new GXHelpRequest(request.Topic, request.Version, request.Culture), token));

@@ -93,7 +93,7 @@ namespace Gurux.AMI.OpenApi.Internal
                         pathItem = doc.Paths[fullPath] = new OpenApiPathItem { Operations = [] };
                     }
                     var tagNames = endpoint.Metadata.GetMetadata<ITagsMetadata>()?.Tags;
-                    if (owner == null && fullPath.StartsWith("/api/extensions/", StringComparison.OrdinalIgnoreCase))
+                    if (owner == null && fullPath.StartsWith("/api/modules/", StringComparison.OrdinalIgnoreCase))
                     {
                         owner = fullPath.Split('/')[3];
                     }

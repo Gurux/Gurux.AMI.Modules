@@ -14,9 +14,9 @@
     </PropertyGroup>
     <ItemGroup>
         <FrameworkReference Include="Microsoft.AspNetCore.App" />
-        <PackageReference Include="Gurux.UI.Components" Version="4.0.2611.902" />
+        <PackageReference Include="Gurux.UI.Components" Version="4.0.2611.1101" />
     <PackageReference Include="Gurux.DLMS.AMI.Module" Version="5.0.2611.902" />
-        <PackageReference Include="Swashbuckle.AspNetCore.SwaggerUI" Version="10.3.1" />
+        <PackageReference Include="Swashbuckle.AspNetCore.SwaggerUI" Version="11.0.0" />
     </ItemGroup>
     <ItemGroup>
         <EmbeddedResource Update="Properties/Resources.resx">

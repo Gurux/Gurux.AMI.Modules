@@ -16,9 +16,9 @@
       },
       "Gurux.UI.Components": {
         "type": "Direct",
-        "requested": "[4.0.2611.902, )",
-        "resolved": "4.0.2611.902",
-        "contentHash": "zmuBRayzFCCk63QKGOEJdXXwXyKt9cR7BStp7VUKKwroXxI1fN2CBbJpO3r3lckKALs8OxLHDuWs2l0LUfyHfA==",
+        "requested": "[4.0.2611.1101, )",
+        "resolved": "4.0.2611.1101",
+        "contentHash": "mJfRvbQ2lg3Bxgp7A/025xSjuPjgGWrbiVJtPIrwq2L5U+PMVGbm2h8j8arAY0P4ARX8gTYjGEMkHmo3JhKekw==",
         "dependencies": {
           "Microsoft.AspNetCore.Components.Authorization": "10.0.14",
           "Microsoft.AspNetCore.Components.Web": "10.0.14",
@@ -27,9 +27,9 @@
       },
       "Swashbuckle.AspNetCore.SwaggerUI": {
         "type": "Direct",
-        "requested": "[10.3.1, )",
-        "resolved": "10.3.1",
-        "contentHash": "kXuMIVJBDD6qMwG78VUrKy4x5Ke98HU0Q023Sf2iSBO/x45c5BuByYPAExIs9UeVsjdGGgvLWU5jK8l6MO2Z0Q=="
+        "requested": "[11.0.0, )",
+        "resolved": "11.0.0",
+        "contentHash": "WvmQe52t2Gei4j1zBPV6euNqdlOlE300p4ce1GTd7hJLV8sLEyIuwJ7IGcK/WK87G2OpEoIb3k2MxMhdQahWrA=="
       },
       "Microsoft.AspNetCore.Authorization": {
         "type": "Transitive",

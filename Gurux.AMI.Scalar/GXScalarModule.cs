@@ -52,6 +52,7 @@ public sealed class GXScalarModule : GXAmiModuleBase
     /// <inheritdoc />
     public override void Configure(AmiModuleBuilder builder)
     {
+        builder.AddView<GXScalarView>(AmiViewArea.Extension, "module.view");
         builder.AddHelp<global::Gurux.AMI.Scalar.Help.GXScalarHelpProvider, GXHelpContent>("module.view",
             static (provider, request, token) => provider.GetHelpAsync(
                 new GXHelpRequest(request.Topic, request.Version, request.Culture), token));

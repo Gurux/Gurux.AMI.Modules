@@ -21,12 +21,12 @@
     <ItemGroup>
         <PackageReference Include="Gurux.DLMS.AMI.Http" Version="4.1.2611.501" />
         <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="10.0.14" />
-        <PackageReference Include="Microsoft.AspNetCore.Http" Version="2.3.13" />
+        <PackageReference Include="Microsoft.AspNetCore.Http" Version="2.3.14" />
         <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="10.0.14" />
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="Gurux.UI.Components" Version="4.0.2611.902" />
+        <PackageReference Include="Gurux.UI.Components" Version="4.0.2611.1101" />
         <PackageReference Include="Gurux.DLMS.AMI.Module" Version="5.0.2611.902" />
         <PackageReference Include="Gurux.DLMS.AMI.Services" Version="4.1.2611.501" />
     </ItemGroup>
